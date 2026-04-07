@@ -100,6 +100,11 @@ mostrarMenu();
 }
 
 
+const completarTarea = () => {
+
+    // realizar para completar una tarea ---> index
+}
+
 
 // Lanzar la app
 mostrarMenu();
