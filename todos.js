@@ -43,7 +43,7 @@ switch (opcion) {
         listarTareas();
         break;
      case "3":
-        console.log("acá se ejecutará la función de completar")
+        completarTarea();
         break;
      case "4":
         console.log("Hasta luego!")
@@ -60,7 +60,7 @@ switch (opcion) {
 const leerTareas = () => {
 
     const data = fs.readFileSync(archivo, "utf8");
-    const lista = JSON.parse(data);
+    return JSON.parse(data);
 
 }
 
@@ -103,6 +103,22 @@ mostrarMenu();
 const completarTarea = () => {
 
     // realizar para completar una tarea ---> index
+    const tareas = leerTareas();
+
+    rl.question("Número de tarea a completar: ", num => {
+        const index = num - 1;
+
+        if(tareas[index]) {
+            tareas[index].completada = true;
+            guardarTareas(tareas)
+            console.log(`Tarea ${num} completada.`)
+        } else {
+            console.log("Número inválido.")
+        }
+        mostrarMenu();
+    })
+
+
 }
 
 
